@@ -10,17 +10,17 @@ import {
 import { useState } from "react"
 import axios from "axios"
 
-export default function AddCard() {
+export default function EditCard({ id, word, definition }: { id: number, word: string, definition: string }) {
 
   const [data, setData] = useState({
-    word: "",
-    definition: ""
+    word: word,
+    definition: definition
   })
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const response = await axios.post("http://localhost:3000/api/words/", {
+    const response = await axios.patch(`http://localhost:3000/api/words/${id}`, {
       data
     })
 
@@ -30,13 +30,13 @@ export default function AddCard() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="py-2 px-[10rem] border border-black border-dotted rounded">Add Card</button>
+        <button className="border border-black border-solid rounded h-[2.5rem] aspect-square px-2 text-xs mx-2">edit</button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add Word</DialogTitle>
+          <DialogTitle>Edit Word</DialogTitle>
           <DialogDescription>
-            Add
+            Edit
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -47,8 +47,9 @@ export default function AddCard() {
             <input
               type="text"
               id="word"
-              className="border border-gray-300 border-dotted rounded-lg px-3 py-2 outline-none"
+              className="border border-gray-300 border-solid rounded-lg px-3 py-2 outline-none"
               placeholder="Enter a word"
+              value={data.word}
               onChange={(e) => { setData({ ...data, word: e.target.value }) }}
             />
           </div>
@@ -62,14 +63,15 @@ export default function AddCard() {
             <input
               type="text"
               id="definition"
-              className="border border-gray-300 border-dotted rounded-lg px-3 py-2 outline-none"
+              className="border border-gray-300 border-solid rounded-lg px-3 py-2 outline-none"
               placeholder="Enter a definition"
+              value={data.definition}
               onChange={(e) => { setData({ ...data, definition: e.target.value }) }}
             />
           </div>
           <button
             type="submit"
-            className="w-full py-2 px-4 font-medium rounded-lg border border-dotted border-black"
+            className="w-full py-2 px-4 font-medium rounded-lg border border-solid border-black"
           >
             Submit
           </button>

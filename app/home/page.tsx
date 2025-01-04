@@ -1,13 +1,13 @@
 'use client'
+import AddCard from "@/components/cards/addCard";
+import Card from "@/components/cards/card";
 import { useEffect, useState } from "react";
-import Card from "../components/card";
-import AddCard from "../components/addCard";
 
 export default function Home() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/words')
+    fetch('http://127.0.0.1:3000/api/words')
       .then((response) => response.json())
       .then((data) => {
         console.log(data)

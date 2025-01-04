@@ -1,7 +1,7 @@
-import { supabase } from '@/app/lib/supabaseClient';
+import { supabase } from '@/lib/supabaseClient';
 import { NextResponse } from 'next/server';
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET({ params }: { params: { id: string } }) {
     const { id } = params;
 
     if (!id) {
@@ -24,17 +24,18 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     const data = body.data;
 
     await supabase.from('flashcards').update(data).eq('id', id);
-    return NextResponse.json({"message": "success"}, {status: 201});
+    return NextResponse.json({ "message": "success" }, { status: 201 });
 }
 
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE({ params }: { params: { id: string } }) {
     const { id } = params;
 
     if (!id) {
         return NextResponse.json({ error: 'ID is required' }, { status: 400 });
     }
+
     await supabase.from('flashcards').delete().eq('id', id);
-    return NextResponse.json({"message": "success"}, {status: 201});
+    return NextResponse.json({ "message": "success" }, { status: 201 });
 }
 
