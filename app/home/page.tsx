@@ -16,7 +16,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="text-center bg-gray-50 min-h-screen">
+    <div className="flex flex-col items-center text-center min-h-screen">
       <div className="text-lg">
         Flash Cards
       </div>

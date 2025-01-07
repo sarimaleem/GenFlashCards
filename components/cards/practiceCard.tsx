@@ -24,14 +24,28 @@ export default function PracticeCard({ data }: { data: Record<string, string> })
 
   useEffect(() => {
     const fetchTranslationQuestion = async () => {
-      const response = await axios.get('http://127.0.0.1:3000/api/question/translate');
+      const response = await axios.get(
+        'http://127.0.0.1:3000/api/question/translate',
+        {
+          params: {
+            word
+          }
+        }
+      );
       const question = response.data
       setTranslationQuestion(question['data']);
     }
     const fetchProductionQuestion = async () => {
-      const response = await axios.get('http://127.0.0.1:3000/api/question/produce');
+      const response = await axios.get(
+        'http://127.0.0.1:3000/api/question/produce',
+        {
+          params: {
+            word
+          }
+        }
+      );
       const question = response.data
-      setTranslationQuestion(question['data']);
+      setProductionQuestion(question['data']);
     }
     if (translationQuestion === '') {
       fetchTranslationQuestion()
@@ -52,8 +66,8 @@ export default function PracticeCard({ data }: { data: Record<string, string> })
         <TabButton name="production" clickedButton={clickedButton} setClickedButton={setClickedButton}></TabButton>
         <TabButton name="statistics" clickedButton={clickedButton} setClickedButton={setClickedButton}></TabButton>
       </div>
-      {clickedButton === 'translation' ? <TranslationCard question={translationQuestion} setQuestion={setTranslationQuestion} /> : <div />}
-      {clickedButton === 'production' ? <ProductionCard question={productionQuestion} setQuestion={setProductionQuestion} /> : <div />}
+      {clickedButton === 'translation' ? <TranslationCard word={word} question={translationQuestion} setQuestion={setTranslationQuestion} /> : <div />}
+      {clickedButton === 'production' ? <ProductionCard word={word} question={productionQuestion} setQuestion={setProductionQuestion} /> : <div />}
       {clickedButton === 'statistics' ? <StatisticsCard /> : <div />}
     </div>
   );

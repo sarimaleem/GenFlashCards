@@ -1,12 +1,19 @@
 'use client'
-import { useEffect, useState } from "react"
-import { Textarea } from "../ui/textarea"
+import { useEffect } from "react"
 import axios from "axios"
+import QuestionForm from "./questionForm"
 
-export default function ProductionCard({ question, setQuestion }: { question: string, setQuestion: Function }) {
+export default function ProductionCard({ word, question, setQuestion }: { word: string, question: string, setQuestion: Function }) {
   useEffect(() => {
     const fetchQuestion = async () => {
-      const response = await axios.get('http://127.0.0.1:3000/api/question/produce');
+      const response = await axios.get(
+        'http://127.0.0.1:3000/api/question/produce',
+        {
+          params: {
+            word
+          }
+        }
+      );
       const question = response.data
       setQuestion(question['data']);
     }
@@ -18,10 +25,8 @@ export default function ProductionCard({ question, setQuestion }: { question: st
   return (
     <div className='mt-[5rem] text-center'>
       <i>Translate the following sentence to Arabic</i>
-      <div>{question}</div>
-      <form>
-        <Textarea className="border-[2px] border-gray-300 border-dotted w-[25rem] h-[5rem]"></Textarea>
-      </form>
+      <br />
+      <QuestionForm question={question} ></QuestionForm>
     </div>
   )
 }

@@ -30,7 +30,7 @@ export default function EditCard({ id, word, definition }: { id: number, word: s
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="border border-black border-solid rounded h-[2.5rem] aspect-square px-2 text-xs mx-2">edit</button>
+        <button className="border-[2px] border-black border-solid rounded h-[2.5rem] aspect-square px-2 text-xs mx-2 transition duration-300 hover:bg-[#fff3bf]">edit</button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

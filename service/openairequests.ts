@@ -6,6 +6,7 @@ export async function translationRequest(word: string) {
                         "role": "developer",
                         "content": `I want you to write a sentence in arabic with the following word.
                                 Make the sentence about 10-30 words.
+                                This is for a language learning app, so don't make the vocab too complicated.
                                 Just give the sentence and do not say things like here is the sentence, please translate, etc.`
                 },
                 {
@@ -13,6 +14,7 @@ export async function translationRequest(word: string) {
                         "content": word
                 }
         ]
+        console.log(messages)
         return gptRequest(messages)
 
 }
@@ -24,6 +26,7 @@ export async function productionRequest(word: string) {
                         "content": `I want you to write a sentence in english with the following word.
                                 Make the sentence about 10-30 words.
                                 Use the word in english, do not use the arabic version of the word.
+                                This is for a language learning app, so don't make the vocab too complicated.
                                 Just give the sentence and do not say things like here is the sentence, please translate, etc.`
                 },
                 {

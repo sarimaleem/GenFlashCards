@@ -30,7 +30,7 @@ export default function AddCard() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="py-2 px-[10rem] border border-black border-solid rounded">Add Card</button>
+        <button className="py-2 px-[10rem] border-[2px] border-black border-solid rounded transition duration-300 hover:bg-[#c3fae8]">Add Card</button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

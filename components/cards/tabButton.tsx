@@ -1,26 +1,38 @@
-export default function TabButton({ name, clickedButton, setClickedButton }: { name: string, clickedButton: string, setClickedButton: Function }) {
+export default function TabButton({
+  name,
+  clickedButton,
+  setClickedButton,
+}: {
+  name: string;
+  clickedButton: string;
+  setClickedButton: Function;
+}) {
   const isActive = clickedButton === name;
-  let backgroundColor = ""
 
+  let activeBackgroundColor = "";
+  let hoverBackgroundColor = "";
+
+  // Define active and hover styles based on the name
   switch (name) {
     case "production":
-      backgroundColor = 'bg-[#ffe3e3]'
+      activeBackgroundColor = "bg-[#ffe3e3]";
+      hoverBackgroundColor = "hover:bg-[#ffe3e3]";
       break;
     case "translation":
-      backgroundColor = 'bg-[#d0ebff]'
+      activeBackgroundColor = "bg-[#d0ebff]";
+      hoverBackgroundColor = "hover:bg-[#d0ebff]";
       break;
     case "statistics":
-      backgroundColor = 'bg-[#c3fae8]'
+      activeBackgroundColor = "bg-[#c3fae8]";
+      hoverBackgroundColor = "hover:bg-[#c3fae8]";
       break;
   }
 
-  let inactivestyle = ``
-  let activeStyle = `${backgroundColor}`;
-  let appliedStyle = isActive ? activeStyle : inactivestyle;
+  const appliedStyle = isActive ? activeBackgroundColor : "";
 
   return (
     <button
-      className={`text-xl border-[2px] p-3 rounded ml-4 border-solid border-gray-500 ${appliedStyle}`}
+      className={`text-xl border-[2px] p-3 rounded ml-4 border-solid border-black ${appliedStyle} ${hoverBackgroundColor} transition duration-300`}
       onClick={() => setClickedButton(name)}
     >
       {name}
