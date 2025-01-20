@@ -1,11 +1,13 @@
-// lib/supabaseClient.js
-import { createClient } from '@supabase/supabase-js';
+import { Client } from 'pg'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const uri = process.env.DB_URI;
 
-if (!supabaseUrl || !supabaseAnonKey) {
+if (!uri) {
   throw new Error('Missing Supabase environment variables');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const client = new Client({
+  connectionString: uri
+});
+
+client.connect()

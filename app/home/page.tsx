@@ -1,4 +1,5 @@
 'use client'
+
 import AddCard from "@/components/cards/addCard";
 import Card from "@/components/cards/card";
 import { useEffect, useState } from "react";
@@ -24,7 +25,7 @@ export default function Home() {
         A list of all your flashcards here, create and delete them at will.
       </div>
       <br />
-      {cards.map((word, index) => (
+      {cards.map((word: any, index: any) => (
         <Card key={index} id={word['id']} word={word['word']} definition={word['definition']} ></Card>
       ))}
       <br />

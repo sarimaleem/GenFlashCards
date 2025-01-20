@@ -1,4 +1,4 @@
-import { translationRequest } from '@/service/openairequests';
+import { evaluateTranslation, translationRequest } from '@/service/openairequests';
 
 import { NextResponse } from 'next/server';
 
@@ -18,6 +18,9 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
     console.log("translate question post api endpoint hit")
-    console.log(req.json())
-    return NextResponse.json({'data': 'hello'}, { status: 201 })
+    const { word, question, answer } = await req.json()
+    console.log(word, question, answer)
+    const gptResponse = await evaluateTranslation(word, question, answer);
+    const evaluation = JSON.parse(gptResponse.choices[0]['message']['content'])
+    return NextResponse.json(evaluation, { status: 201 })
 }

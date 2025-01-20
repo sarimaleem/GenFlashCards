@@ -23,8 +23,8 @@ export default function TabButton({
       hoverBackgroundColor = "hover:bg-[#d0ebff]";
       break;
     case "statistics":
-      activeBackgroundColor = "bg-[#c3fae8]";
-      hoverBackgroundColor = "hover:bg-[#c3fae8]";
+      activeBackgroundColor = "bg-[#e5dbff]";
+      hoverBackgroundColor = "hover:bg-[#e5dbff]";
       break;
   }
 

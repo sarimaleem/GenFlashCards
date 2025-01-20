@@ -29,6 +29,7 @@ function cardClickHandler(id: number) {
 }
 
 async function cardDeleteHandler(id: number) {
-  await axios.delete(`http://localhost:3000/api/words/${id}/`);
+  console.log('delete handler url', `http://127.0.0.1:3000/api/words/${id}/`)
+  await axios.delete(`http://127.0.0.1:3000/api/words/${id}`);
   window.location.reload()
 }

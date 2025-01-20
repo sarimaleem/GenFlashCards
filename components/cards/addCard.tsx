@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Dialog,
   DialogContent,
@@ -20,7 +22,7 @@ export default function AddCard() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const response = await axios.post("http://localhost:3000/api/words/", {
+    const response = await axios.post("http://127.0.0.1:3000/api/words/", {
       data
     })
 

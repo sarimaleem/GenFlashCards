@@ -7,9 +7,9 @@ export default function Home() {
   const [ping, setPing] = useState('')
   useEffect(() => {
     const fetchPing = async () => {
-      const response = await axios.get("http://localhost:3000/api/ping");
+      const response = await axios.get("http://127.0.0.1:3000/api/ping");
       setPing(response.data['data']);
-      let test = await axios.get("http://localhost:3000/api/words");
+      let test = await axios.get("http://127.0.0.1:3000/api/words");
       console.log(test)
     };
     fetchPing();
