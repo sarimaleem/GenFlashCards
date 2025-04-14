@@ -4,9 +4,8 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
     console.log("Get all words endpoint hit")
-    console.log("client", client)
     const data = await getAllFlashcards.run(undefined, client)
-    console.log(data)
+    console.log("get all words data", data)
     return NextResponse.json(data);
 }
 

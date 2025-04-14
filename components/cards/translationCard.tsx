@@ -8,9 +8,10 @@ import EvaluationBanner from "./evaluationBanner";
 export default function TranslationCard({ word, question, setQuestion }: { word: string, question: string, setQuestion: Function }) {
   console.log("the question is", question);
 
+  const API_URL = process.env.NEXT_PUBLIC_HOST_URL;
   const fetchQuestion = async () => {
     const response = await axios.get(
-      'http://127.0.0.1:3000/api/question/translate',
+      `${API_URL}/api/question/translate`,
       {
         params: {
           word

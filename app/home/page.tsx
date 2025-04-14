@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [cards, setCards] = useState([]);
+  const API_URL = process.env.NEXT_PUBLIC_HOST_URL;
+  console.log("api url", API_URL)
 
   useEffect(() => {
-    fetch('http://127.0.0.1:3000/api/words')
+    fetch(`${API_URL}/api/words`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data)

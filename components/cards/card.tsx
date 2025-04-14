@@ -25,11 +25,11 @@ export default function Card({ id, word, definition }: { id: number, word: strin
 }
 
 function cardClickHandler(id: number) {
-  window.location.href = `http://127.0.0.1:3000/card/${id}`;
+  window.location.href = `${process.env.API_URL}/card/${id}`;
 }
 
 async function cardDeleteHandler(id: number) {
-  console.log('delete handler url', `http://127.0.0.1:3000/api/words/${id}/`)
-  await axios.delete(`http://127.0.0.1:3000/api/words/${id}`);
+  console.log('delete handler url', `${process.env.API_URL}/api/words/${id}/`)
+  await axios.delete(`${process.env.API_URL}/api/words/${id}`);
   window.location.reload()
 }

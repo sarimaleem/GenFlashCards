@@ -25,7 +25,7 @@ const formSchema = z.object({
   }),
 })
 
-export default function QuestionForm({ word, question, evaluation, setEvaluation, fetchQuestion }: { word: string, question: string, evaluation: Record<string, string>, setEvaluation: Function, fetchQuestion: Function}) {
+export default function QuestionForm({ word, question, evaluation, setEvaluation, fetchQuestion }: { word: string, question: string, evaluation: Record<string, string>, setEvaluation: Function, fetchQuestion: Function }) {
 
   const [submitted, setSubmitted] = useState(false);
 
