@@ -20,7 +20,7 @@ export default function EditCard({ id, word, definition }: { id: number, word: s
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const response = await axios.patch(`http://127.0.0.1:3000/api/words/${id}`, {
+    const response = await axios.patch(`${process.env.NEXT_PUBLIC_HOST_URL}/api/words/${id}`, {
       data
     })
 

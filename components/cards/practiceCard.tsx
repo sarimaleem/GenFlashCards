@@ -26,7 +26,7 @@ export default function PracticeCard({ data }: { data: IGetFlashcardResult }) {
   useEffect(() => {
     const fetchTranslationQuestion = async () => {
       const response = await axios.get(
-        'http://127.0.0.1:3000/api/question/translate',
+        `${process.env.NEXT_PUBLIC_HOST_URL}/api/question/translate`,
         {
           params: {
             word
@@ -38,7 +38,7 @@ export default function PracticeCard({ data }: { data: IGetFlashcardResult }) {
     }
     const fetchProductionQuestion = async () => {
       const response = await axios.get(
-        'http://127.0.0.1:3000/api/question/produce',
+        `${process.env.NEXT_PUBLIC_HOST_URL}/api/question/produce`,
         {
           params: {
             word
@@ -59,7 +59,7 @@ export default function PracticeCard({ data }: { data: IGetFlashcardResult }) {
 
   return (
     <div className="flex flex-col items-center">
-      <a href="http://127.0.0.1:3000/home" className='self-start ml-3 mt-3 w-[50px] h-[50px]'>
+      <a href={`${process.env.NEXT_PUBLIC_HOST_URL}/home`} className='self-start ml-3 mt-3 w-[50px] h-[50px]'>
         <img  src="/home.svg"></img>
       </a>
       <div className="text-3xl">

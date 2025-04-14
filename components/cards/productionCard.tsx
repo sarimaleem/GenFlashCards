@@ -8,7 +8,7 @@ export default function ProductionCard({ word, question, setQuestion }: { word: 
 
   const fetchQuestion = async () => {
     const response = await axios.get(
-      'http://127.0.0.1:3000/api/question/translate',
+      `${process.env.NEXT_PUBLIC_HOST_URL}/api/question/translate`,
       {
         params: {
           word

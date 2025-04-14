@@ -43,7 +43,7 @@ export default function QuestionForm({ word, question, evaluation, setEvaluation
       fetchQuestion()
       form.reset()
     } else {
-      const response = await axios.post("http://127.0.0.1:3000/api/question/translate", {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_HOST_URL}/api/question/translate`, {
         word,
         question,
         answer: values["answer"],
